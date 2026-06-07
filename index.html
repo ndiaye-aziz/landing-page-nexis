@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>ELITE SECURITY & NEXIS SECURITY – Plateforme de supervision 360°</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plateforme professionnelle de supervision 360° pour la sécurité privée : RH, sites, rondes, interventions, qualité, conformité – France & Afrique francophone.">
   <style>
     :root {
       --bg: #0f172a;
@@ -48,13 +49,30 @@
       justify-content: space-between;
       padding: 1rem 0;
     }
-    .logo {
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .logo-text {
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
-    .logo span {
+    .logo-text span {
       color: var(--accent);
     }
     .nav-links {
@@ -79,6 +97,7 @@
       border: 1px solid transparent;
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
     .btn-primary {
       background: var(--accent);
@@ -113,6 +132,13 @@
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
       gap: 2.5rem;
       align-items: center;
+    }
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
     }
     .hero-title {
       font-size: 2.3rem;
@@ -273,6 +299,57 @@
       min-height: 90px;
       resize: vertical;
     }
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .mockup {
+      border-radius: 0.8rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #1f2937, #020617);
+      padding: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .mockup-title {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.55rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+    .compliance-item {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .compliance-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
     footer {
       padding: 2rem 0 2.5rem;
       font-size: 0.8rem;
@@ -298,7 +375,9 @@
     @media (max-width: 900px) {
       .hero-grid,
       .grid-3,
-      .two-col {
+      .two-col,
+      .mockups-grid,
+      .compliance-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -320,241 +399,350 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="logo">
-        ELITE <span>SECURITY</span> & NEXIS <span>SECURITY</span>
+      <div class="logo-block">
+        <div class="logo-mark">ES</div>
+        <div class="logo-text">
+          ELITE <span>SECURITY</span> & NEXIS <span>SECURITY</span>
+        </div>
       </div>
       <nav class="nav-links">
         <a href="#solution">Solution</a>
         <a href="#fonctionnalites">Fonctionnalités</a>
-        <a href="#avantages">Avantages</a>
+        <a href="#casusage">Cas d’usage</a>
+        <a href="#conformite">Conformité</a>
         <a href="#demo">Démonstration</a>
         <a href="#apropos">À propos</a>
       </nav>
     </div>
   </header>
 
-    <main>
-      <section class="hero" id="top">
-        <div class="container hero-grid">
-          <div>
-            <h1 class="hero-title">
-              Plateforme professionnelle de supervision 360° pour la sécurité privée
-            </h1>
-            <p class="hero-subtitle">
-              Une solution institutionnelle complète pour piloter vos agents, sites, rondes, interventions, qualité et conformité,
-              en France et au Sénégal, depuis une seule interface.
-            </p>
-            <div class="hero-tags">
-              <span class="tag">Supervision 360°</span>
-              <span class="tag">Rondes avancées (QR / NFC / GPS)</span>
-              <span class="tag">RH & notation annuelle</span>
-              <span class="tag">Audits & qualité</span>
-              <span class="tag">Multi‑pays : France & Sénégal</span>
-            </div>
-            <div class="hero-actions">
-              <button class="btn btn-primary">Demander une démonstration</button>
-              <button class="btn btn-outline">Télécharger le dossier institutionnel</button>
-            </div>
-            <p class="hero-note">
-              Conçue par un dirigeant de sécurité privée, pour les exigences réelles du terrain et des clients grands comptes.
-            </p>
-          </div>
-          <div class="hero-card">
-            <h3>Vue dirigeant — Supervision globale</h3>
-            <p>
-              Suivez en temps réel la conformité de vos agents, sites et opérations, avec une séparation stricte France / Sénégal.
-            </p>
-            <div class="hero-metrics">
-              <div class="metric">
-                <div class="metric-label">Agents conformes</div>
-                <div class="metric-value">92 %</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Rondes réalisées</div>
-                <div class="metric-value">98 %</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Interventions dans les SLA</div>
-                <div class="metric-value">95 %</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Sites audités</div>
-                <div class="metric-value">87 %</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="solution">
-        <div class="container">
-          <h2 class="section-title">Une réponse structurée aux enjeux du secteur</h2>
-          <p class="section-subtitle">
-            Le secteur de la sécurité privée souffre d’un manque de digitalisation, de traçabilité et de supervision fiable.
-            La plateforme ELITE & NEXIS apporte une solution complète, pensée pour les exigences opérationnelles et institutionnelles.
-          </p>
-          <div class="grid-3">
-            <div class="card">
-              <h3>Problèmes identifiés</h3>
-              <ul>
-                <li>Rondes non tracées ou peu fiables</li>
-                <li>Interventions sans suivi ni SLA</li>
-                <li>Gestion RH artisanale et non centralisée</li>
-                <li>Conformité CNAPS difficile à démontrer</li>
-                <li>Absence de supervision globale multi‑sites</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Solution proposée</h3>
-              <ul>
-                <li>23 workflows métiers intégrés</li>
-                <li>Rondes avancées (QR / NFC / GPS / anti‑fraude)</li>
-                <li>Interventions avec SLA, escalade et urgence</li>
-                <li>Notation annuelle automatique des agents</li>
-                <li>Audits qualité et supervision 360° dirigeant</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Positionnement</h3>
-              <ul>
-                <li>Plateforme premium institutionnelle</li>
-                <li>Adaptée France & Afrique francophone</li>
-                <li>Architecture scalable et sécurisée</li>
-                <li>Conçue par un dirigeant du métier</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="fonctionnalites">
-        <div class="container">
-          <h2 class="section-title">Fonctionnalités clés de la plateforme</h2>
-          <p class="section-subtitle">
-            Une couverture fonctionnelle complète, structurée autour des besoins réels d’une entreprise de sécurité privée moderne.
-          </p>
-          <div class="grid-3">
-            <div class="card">
-              <span class="pill">RH & Agents</span>
-              <h3>Gestion RH professionnelle</h3>
-              <ul>
-                <li>Fiches agents complètes</li>
-                <li>Documents & contrats (FR / SN)</li>
-                <li>Formations & habilitations</li>
-                <li>Notation ponctuelle & annuelle</li>
-                <li>Gestion disciplinaire structurée</li>
-              </ul>
-            </div>
-            <div class="card">
-              <span class="pill">Opérations</span>
-              <h3>Sites, rondes & interventions</h3>
-              <ul>
-                <li>Sites, consignes, risques, documents</li>
-                <li>Planning multi‑sites avec conformité automatique</li>
-                <li>Rondes avancées anti‑fraude (GPS, points dynamiques)</li>
-                <li>Interventions avec SLA, escalade et rapports</li>
-                <li>Main courante et rapports PDF</li>
-              </ul>
-            </div>
-            <div class="card">
-              <span class="pill">Qualité & Supervision</span>
-              <h3>Qualité & supervision 360°</h3>
-              <ul>
-                <li>Audits sites, agents, matériel</li>
-                <li>Non‑conformités & actions correctives</li>
-                <li>Tableaux de bord dirigeant multi‑pays</li>
-                <li>Heatmaps incidents & statistiques avancées</li>
-                <li>Vue client dédiée (sites, rondes, interventions)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="avantages">
-        <div class="container two-col">
-          <div>
-            <h2 class="section-title">Avantages clés pour votre structure</h2>
-            <p class="section-subtitle">
-              La plateforme a été pensée pour offrir des avantages concrets, mesurables, et directement exploitables dans votre
-              organisation.
-            </p>
-            <ul class="list">
-              <li><span class="highlight">Anti‑fraude rondes :</span> contrôle GPS, points dynamiques, détection d’anomalies.</li>
-              <li><span class="highlight">Multi‑pays :</span> séparation stricte des données France / Sénégal.</li>
-              <li><span class="highlight">Cynophile :</span> gestion complète du binôme agent + chien.</li>
-              <li><span class="highlight">RH structurée :</span> notation annuelle, discipline, formations, habilitations.</li>
-              <li><span class="highlight">Supervision 360° :</span> vue dirigeant, responsable, client.</li>
-              <li><span class="highlight">Architecture scalable :</span> prête pour une montée en charge et une expansion.</li>
-            </ul>
-          </div>
-          <div class="contact-card" id="demo">
-            <h3>Demander une démonstration</h3>
-            <p style="margin-bottom:0.8rem;color:var(--muted);">
-              Laissez vos coordonnées pour organiser une présentation ciblée de la plateforme.
-            </p>
-            <form>
-              <label>Nom / Prénom</label>
-              <input type="text" placeholder="Votre nom complet">
-              <label>Entreprise</label>
-              <input type="text" placeholder="Nom de votre structure">
-              <label>Email professionnel</label>
-              <input type="email" placeholder="adresse@entreprise.com">
-              <label>Message</label>
-              <textarea placeholder="Précisez vos besoins, votre contexte, vos attentes."></textarea>
-              <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.4rem;">
-                Envoyer la demande de démonstration
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section id="apropos">
-        <div class="container">
-          <h2 class="section-title">À propos d’ELITE SECURITY & NEXIS SECURITY</h2>
-          <p class="section-subtitle">
-            Une plateforme conçue par un dirigeant de sécurité privée, pour répondre aux exigences du terrain, des clients et des
-            autorités.
-          </p>
-          <div class="two-col">
-            <div>
-              <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">ELITE SECURITY — Sénégal</h3>
-              <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
-                Société de sécurité privée implantée au Sénégal, avec une expertise opérationnelle terrain, une connaissance fine
-                des contraintes locales et des attentes des clients institutionnels.
-              </p>
-              <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">NEXIS SECURITY — France</h3>
-              <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
-                Structure française positionnée sur un segment premium, conforme aux exigences CNAPS, avec une approche
-                institutionnelle et une volonté de digitalisation avancée du métier.
-              </p>
-            </div>
-            <div>
-              <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Direction & expertise</h3>
-              <p style="font-size:0.88rem;color:var(--muted);">
-                La plateforme est portée par El Hadji Abdoul Aziz N’DIAYE, dirigeant des deux structures, diplômé RNCP niveau 6,
-                certifié SSIAP, CQP/APS, et membre de jury TP01373.  
-                Cette double légitimité terrain + institutionnelle garantit une solution alignée avec les réalités du métier.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container footer-grid">
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
         <div>
-          © 2026 ELITE SECURITY & NEXIS SECURITY — Tous droits réservés.
+          <div class="hero-kicker">Plateforme de supervision 360° – Sécurité privée</div>
+          <h1 class="hero-title">
+            Pilotez vos opérations de sécurité privée, en France et en Afrique, depuis une seule plateforme.
+          </h1>
+          <p class="hero-subtitle">
+            Une solution institutionnelle complète pour superviser vos agents, sites, rondes, interventions, qualité et conformité,
+            avec une séparation stricte France / Sénégal et une approche alignée sur les exigences CNAPS et clients grands comptes.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">Supervision 360°</span>
+            <span class="tag">Rondes avancées (QR / NFC / GPS)</span>
+            <span class="tag">RH & notation annuelle</span>
+            <span class="tag">Audits & qualité</span>
+            <span class="tag">Multi‑pays : France & Sénégal</span>
+          </div>
+          <div class="hero-actions">
+            <a href="#demo" class="btn btn-primary">Demander une démonstration</a>
+            <a href="#fonctionnalites" class="btn btn-outline">Découvrir les fonctionnalités</a>
+          </div>
+          <p class="hero-note">
+            Conçue par un dirigeant de sécurité privée, pour les exigences réelles du terrain, des autorités et des clients
+            institutionnels.
+          </p>
         </div>
-        <div class="footer-links">
-          <a href="#top">Retour en haut</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Politique de confidentialité</a>
-          <a href="#">Contact</a>
+        <div class="hero-card">
+          <h3>Vue dirigeant — Supervision globale multi‑pays</h3>
+          <p>
+            Suivez en temps réel la conformité de vos agents, sites et opérations, avec une séparation stricte France / Sénégal
+            et des tableaux de bord adaptés à chaque niveau (dirigeant, responsable, client).
+          </p>
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-label">Agents conformes</div>
+              <div class="metric-value">92 %</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Rondes réalisées</div>
+              <div class="metric-value">98 %</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Interventions dans les SLA</div>
+              <div class="metric-value">95 %</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Sites audités</div>
+              <div class="metric-value">87 %</div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+    </section>
+
+    <!-- SOLUTION -->
+    <section id="solution">
+      <div class="container">
+        <h2 class="section-title">Une réponse structurée aux enjeux du secteur</h2>
+        <p class="section-subtitle">
+          Le secteur de la sécurité privée souffre d’un manque de digitalisation, de traçabilité et de supervision fiable.
+          La plateforme ELITE & NEXIS apporte une réponse complète, pensée pour les exigences opérationnelles, institutionnelles
+          et réglementaires, en France et en Afrique francophone.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Problèmes identifiés</h3>
+            <ul>
+              <li>Rondes non tracées ou peu fiables</li>
+              <li>Interventions sans suivi ni SLA</li>
+              <li>Gestion RH artisanale et non centralisée</li>
+              <li>Conformité CNAPS difficile à démontrer</li>
+              <li>Absence de supervision globale multi‑sites / multi‑pays</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Solution proposée</h3>
+            <ul>
+              <li>23 workflows métiers intégrés</li>
+              <li>Rondes avancées (QR / NFC / GPS / anti‑fraude)</li>
+              <li>Interventions avec SLA, escalade et urgence</li>
+              <li>Notation annuelle automatique des agents</li>
+              <li>Audits qualité et supervision 360° dirigeant</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Positionnement</h3>
+            <ul>
+              <li>Plateforme premium institutionnelle</li>
+              <li>Adaptée France & Afrique francophone</li>
+              <li>Architecture scalable et sécurisée</li>
+              <li>Conçue par un dirigeant du métier</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FONCTIONNALITÉS -->
+    <section id="fonctionnalites">
+      <div class="container">
+        <h2 class="section-title">Fonctionnalités clés de la plateforme</h2>
+        <p class="section-subtitle">
+          Une couverture fonctionnelle complète, structurée autour des besoins réels d’une entreprise de sécurité privée moderne,
+          avec des vues adaptées à chaque profil (dirigeant, responsable, client, agent).
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <span class="pill">RH & Agents</span>
+            <h3>Gestion RH professionnelle</h3>
+            <ul>
+              <li>Fiches agents complètes (FR / SN)</li>
+              <li>Documents & contrats par pays</li>
+              <li>Formations, recyclages & habilitations</li>
+              <li>Notation ponctuelle & annuelle</li>
+              <li>Gestion disciplinaire structurée</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="pill">Opérations</span>
+            <h3>Sites, rondes & interventions</h3>
+            <ul>
+              <li>Sites, consignes, risques, documents</li>
+              <li>Planning multi‑sites avec conformité automatique</li>
+              <li>Rondes avancées anti‑fraude (GPS, points dynamiques)</li>
+              <li>Interventions avec SLA, escalade et rapports</li>
+              <li>Main courante et rapports PDF</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="pill">Qualité & Supervision</span>
+            <h3>Qualité & supervision 360°</h3>
+            <ul>
+              <li>Audits sites, agents, matériel</li>
+              <li>Non‑conformités & actions correctives</li>
+              <li>Tableaux de bord dirigeant multi‑pays</li>
+              <li>Heatmaps incidents & statistiques avancées</li>
+              <li>Vue client dédiée (sites, rondes, interventions)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAS D'USAGE -->
+    <section id="casusage">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">Cas d’usage et scénarios concrets</h2>
+          <p class="section-subtitle">
+            La plateforme est conçue pour répondre à des situations opérationnelles concrètes, avec une traçabilité exploitable
+            auprès des clients, des autorités et de la direction.
+          </p>
+          <ul class="list">
+            <li><span class="highlight">Sites sensibles :</span> supervision renforcée des rondes, incidents et interventions.</li>
+            <li><span class="highlight">Clients grands comptes :</span> accès dédié avec reporting structuré et exportable.</li>
+            <li><span class="highlight">Multi‑pays :</span> gestion séparée France / Sénégal, avec indicateurs consolidés.</li>
+            <li><span class="highlight">Cynophile :</span> gestion du binôme agent + chien, suivi des interventions et rondes.</li>
+            <li><span class="highlight">Qualité & audits :</span> préparation des audits clients, internes ou réglementaires.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Maquettes & vues applicatives</h3>
+          <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.6rem;">
+            Les écrans ci‑dessous illustrent la structuration future de l’application : vue dirigeant, vue opérations,
+            vue qualité et vue client. Ils servent de base de travail pour le développement.
+          </p>
+          <div class="mockups-grid">
+            <div class="mockup">
+              <div>
+                <div class="mockup-title">Vue dirigeant</div>
+                <p>Tableaux de bord consolidés : conformité agents, rondes, interventions, NC, par pays et par client.</p>
+              </div>
+              <div>
+                <span class="badge">Multi‑pays</span>
+                <span class="badge">KPI</span>
+              </div>
+            </div>
+            <div class="mockup">
+              <div>
+                <div class="mockup-title">Vue opérations</div>
+                <p>Planning, rondes, interventions, main courante, avec alertes en temps réel et suivi des SLA.</p>
+              </div>
+              <div>
+                <span class="badge">Rondes</span>
+                <span class="badge">Interventions</span>
+              </div>
+            </div>
+            <div class="mockup">
+              <div>
+                <div class="mockup-title">Vue client</div>
+                <p>Accès sécurisé aux sites, rapports, rondes et interventions, avec téléchargement des PDF.</p>
+              </div>
+              <div>
+                <span class="badge">Portail client</span>
+                <span class="badge">Reporting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFORMITÉ & DÉONTOLOGIE -->
+    <section id="conformite">
+      <div class="container">
+        <h2 class="section-title">Conformité, déontologie & cadre institutionnel</h2>
+        <p class="section-subtitle">
+          La plateforme s’inscrit dans une démarche de conformité et de professionnalisation du secteur, en cohérence avec
+          les exigences réglementaires, déontologiques et contractuelles.
+        </p>
+        <div class="compliance-grid">
+          <div class="compliance-item">
+            <div class="compliance-label">Réglementation & CNAPS</div>
+            <p>
+              Structuration des données et des processus pour faciliter la démonstration de conformité (CNAPS, obligations
+              légales, traçabilité des interventions et rondes, archivage des rapports).
+            </p>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-label">Déontologie & professionnalisme</div>
+            <p>
+              Approche centrée sur la rigueur, la transparence et la qualité de service, avec des outils de suivi des
+              engagements contractuels et des niveaux de service.
+            </p>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-label">Données & sécurité</div>
+            <p>
+              Architecture pensée pour un hébergement sécurisé, une séparation des environnements par pays et une gestion
+              maîtrisée des accès (dirigeant, responsable, client, agent).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVANTAGES + DEMO -->
+    <section id="avantages">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">Avantages clés pour votre structure</h2>
+          <p class="section-subtitle">
+            La plateforme a été pensée pour offrir des avantages concrets, mesurables, et directement exploitables dans votre
+            organisation, en France comme au Sénégal.
+          </p>
+          <ul class="list">
+            <li><span class="highlight">Anti‑fraude rondes :</span> contrôle GPS, points dynamiques, détection d’anomalies.</li>
+            <li><span class="highlight">Multi‑pays :</span> séparation stricte des données France / Sénégal.</li>
+            <li><span class="highlight">Cynophile :</span> gestion complète du binôme agent + chien.</li>
+            <li><span class="highlight">RH structurée :</span> notation annuelle, discipline, formations, habilitations.</li>
+            <li><span class="highlight">Supervision 360° :</span> vue dirigeant, responsable, client.</li>
+            <li><span class="highlight">Architecture scalable :</span> prête pour une montée en charge et une expansion.</li>
+          </ul>
+        </div>
+        <div class="contact-card" id="demo">
+          <h3>Demander une démonstration</h3>
+          <p style="margin-bottom:0.8rem;color:var(--muted);">
+            Laissez vos coordonnées pour organiser une présentation ciblée de la plateforme et de ses cas d’usage.
+          </p>
+          <form>
+            <label>Nom / Prénom</label>
+            <input type="text" placeholder="Votre nom complet">
+            <label>Entreprise</label>
+            <input type="text" placeholder="Nom de votre structure">
+            <label>Email professionnel</label>
+            <input type="email" placeholder="adresse@entreprise.com">
+            <label>Message</label>
+            <textarea placeholder="Précisez vos besoins, votre contexte, vos attentes."></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.4rem;">
+              Envoyer la demande de démonstration
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="apropos">
+      <div class="container">
+        <h2 class="section-title">À propos d’ELITE SECURITY & NEXIS SECURITY</h2>
+        <p class="section-subtitle">
+          Une plateforme portée par un dirigeant de sécurité privée, pour répondre aux exigences du terrain, des clients et des
+          autorités, avec une double implantation France / Sénégal.
+        </p>
+        <div class="two-col">
+          <div>
+            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">ELITE SECURITY — Sénégal</h3>
+            <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
+              Société de sécurité privée implantée au Sénégal, avec une expertise opérationnelle terrain, une connaissance fine
+              des contraintes locales et des attentes des clients institutionnels et privés.
+            </p>
+            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">NEXIS SECURITY — France</h3>
+            <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
+              Structure française positionnée sur un segment premium, conforme aux exigences CNAPS, avec une approche
+              institutionnelle et une volonté de digitalisation avancée du métier de la sécurité privée.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Direction & expertise</h3>
+            <p style="font-size:0.88rem;color:var(--muted);">
+              La plateforme est portée par El Hadji Abdoul Aziz N’DIAYE, dirigeant des deux structures, diplômé RNCP niveau 6,
+              certifié SSIAP, CQP/APS, et membre de jury TP01373.  
+              Cette double légitimité terrain + institutionnelle garantit une solution alignée avec les réalités du métier,
+              les attentes des clients et les exigences réglementaires.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        © 2026 ELITE SECURITY & NEXIS SECURITY — Tous droits réservés.
+      </div>
+      <div class="footer-links">
+        <a href="#top">Retour en haut</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#demo">Contact / Démo</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
+
