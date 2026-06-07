@@ -2,61 +2,52 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ELITE SECURITY & NEXIS SECURITY – Plateforme de supervision 360°</title>
+  <title>NEXIS PLATFORM – Supervision 360°</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Plateforme professionnelle de supervision 360° pour la sécurité privée : RH, sites, rondes, interventions, qualité, conformité – France & Afrique francophone.">
+  <meta name="description" content="Plateforme de supervision 360° pour la sécurité privée : RH, sites, rondes, interventions, qualité, clients.">
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-light: #111827;
+      --bg: #020617;
+      --bg-soft: #0b1120;
+      --panel: #0f172a;
       --accent: #2563eb;
       --accent-soft: #1d4ed8;
-      --text: #f9fafb;
+      --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1f2937;
+      --danger: #ef4444;
+      --success: #22c55e;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    a { color: var(--accent); text-decoration: none; }
+    .app-shell {
+      display: flex;
+      min-height: 100vh;
     }
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    /* SIDEBAR (après connexion) */
+    .sidebar {
+      width: 240px;
+      background: #020617;
+      border-right: 1px solid var(--border);
+      padding: 1.2rem 1rem;
+      display: none; /* caché tant qu'on n'est pas connecté */
+      flex-direction: column;
     }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .nav {
+    .sidebar-logo {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-    .logo-block {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
     }
     .logo-mark {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 999px;
       border: 1px solid var(--accent-soft);
       display: flex;
@@ -67,32 +58,196 @@
       color: var(--accent);
     }
     .logo-text {
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .logo-text span {
+    .logo-text span { color: var(--accent); }
+    .sidebar-section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin: 1rem 0 0.4rem;
+    }
+    .nav-list {
+      list-style: none;
+      font-size: 0.88rem;
+    }
+    .nav-item {
+      padding: 0.45rem 0.4rem;
+      border-radius: 0.4rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      background: #0b1120;
+      color: var(--text);
+    }
+    .nav-item.active {
+      background: #111827;
       color: var(--accent);
+      border: 1px solid var(--border);
     }
-    .nav-links {
+
+    /* MAIN AREA */
+    .main {
+      flex: 1;
       display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
+      flex-direction: column;
     }
-    .nav-links a {
+    .topbar {
+      height: 56px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .topbar-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .topbar-env {
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.6rem;
+    }
+    .topbar-right {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .user-pill {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .user-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    /* LOGIN SCREEN */
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .login-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+    .login-hero-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .login-hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 28rem;
+      margin-bottom: 1.2rem;
+    }
+    .login-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .tag {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.7rem;
       color: var(--muted);
     }
-    .nav-links a:hover {
+    .login-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 26rem;
+    }
+    .login-card {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 1.5rem;
+      font-size: 0.88rem;
+    }
+    .login-card h2 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+    .login-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .form-group input {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      padding: 0.5rem 0.6rem;
+      font-size: 0.85rem;
+    }
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+    .link-muted {
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .link-muted:hover {
       color: var(--text);
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.7rem 1.4rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
       border: 1px solid transparent;
       cursor: pointer;
@@ -103,225 +258,118 @@
       background: var(--accent);
       border-color: var(--accent-soft);
       color: #f9fafb;
+      width: 100%;
+      margin-top: 0.6rem;
     }
     .btn-primary:hover {
       background: var(--accent-soft);
     }
-    .btn-outline {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--text);
-    }
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    main {
-      padding-bottom: 4rem;
-    }
-    section {
-      padding: 3.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero {
-      padding-top: 3rem;
-      padding-bottom: 3.5rem;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-    .hero-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-    .hero-title {
-      font-size: 2.3rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-    .hero-subtitle {
+    .login-meta {
       margin-top: 0.8rem;
-      color: var(--muted);
-      font-size: 0.98rem;
-      max-width: 32rem;
-    }
-    .hero-tags {
-      margin-top: 1.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
       font-size: 0.8rem;
-    }
-    .tag {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.7rem;
       color: var(--muted);
     }
-    .hero-actions {
-      margin-top: 1.8rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+
+    /* DASHBOARD (après connexion) */
+    .dashboard {
+      display: none; /* visible après "connexion" */
+      padding: 1.5rem;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%);
+      flex: 1;
+      overflow-y: auto;
     }
-    .hero-note {
-      margin-top: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+    .dash-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-    .hero-card {
-      border-radius: 1rem;
+    .panel {
+      border-radius: 0.9rem;
       border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-      padding: 1.6rem;
-      font-size: 0.85rem;
+      background: var(--panel);
+      padding: 1.2rem;
+      font-size: 0.88rem;
     }
-    .hero-card h3 {
+    .panel h3 {
       font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+    .panel-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
       margin-bottom: 0.8rem;
-      font-weight: 500;
     }
-    .hero-metrics {
+    .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 0.8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
     }
-    .metric {
+    .kpi {
       border-radius: 0.7rem;
       border: 1px solid var(--border);
       padding: 0.6rem 0.7rem;
-    }
-    .metric-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    .metric-value {
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-top: 0.15rem;
-    }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-    }
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 32rem;
-      margin-bottom: 1.6rem;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      padding: 1.2rem;
-      font-size: 0.88rem;
-      background: var(--bg-light);
-    }
-    .card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    .card ul {
-      list-style: none;
-      margin-top: 0.4rem;
-    }
-    .card ul li {
-      margin-bottom: 0.25rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.2rem 0.6rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-    .list {
-      list-style: none;
-      font-size: 0.88rem;
-    }
-    .list li {
-      margin-bottom: 0.35rem;
-      color: var(--muted);
-    }
-    .highlight {
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .contact-card {
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      padding: 1.2rem;
-      background: var(--bg-light);
-      font-size: 0.88rem;
-    }
-    .contact-card label {
-      display: block;
       font-size: 0.8rem;
+    }
+    .kpi-label {
       color: var(--muted);
       margin-bottom: 0.2rem;
     }
-    .contact-card input,
-    .contact-card textarea {
-      width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      padding: 0.5rem 0.6rem;
-      font-size: 0.85rem;
-      margin-bottom: 0.7rem;
+    .kpi-value {
+      font-size: 0.95rem;
+      font-weight: 500;
     }
-    .contact-card textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-    .mockups-grid {
+    .kpi-value.success { color: var(--success); }
+    .kpi-value.danger { color: var(--danger); }
+    .module-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 0.9rem;
+      margin-top: 0.6rem;
     }
-    .mockup {
-      border-radius: 0.8rem;
+    .module-card {
+      border-radius: 0.7rem;
       border: 1px solid var(--border);
-      background: linear-gradient(135deg, #1f2937, #020617);
-      padding: 0.9rem;
+      background: #020617;
+      padding: 0.7rem;
       font-size: 0.8rem;
-      color: var(--muted);
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      cursor: pointer;
     }
-    .mockup-title {
+    .module-title {
       font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+    }
+    .module-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .module-tag {
+      display: inline-block;
+      margin-top: 0.3rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.5rem;
+    }
+    .activity-list {
+      list-style: none;
+      font-size: 0.8rem;
+    }
+    .activity-item {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #111827;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    .activity-main {
       color: var(--text);
-      margin-bottom: 0.4rem;
-      font-weight: 500;
+    }
+    .activity-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
     }
     .badge {
       display: inline-flex;
@@ -332,417 +380,237 @@
       font-size: 0.7rem;
       color: var(--muted);
       margin-right: 0.3rem;
-      margin-bottom: 0.3rem;
-    }
-    .compliance-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-    }
-    .compliance-item {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .compliance-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-    footer {
-      padding: 2rem 0 2.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      color: var(--muted);
-    }
-    .footer-links a:hover {
-      color: var(--text);
     }
     @media (max-width: 900px) {
-      .hero-grid,
-      .grid-3,
-      .two-col,
-      .mockups-grid,
-      .compliance-grid {
+      .login-grid, .dash-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-    }
-    @media (max-width: 640px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-      }
-      .hero-title {
-        font-size: 1.8rem;
-      }
+      .sidebar { display: none !important; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo-block">
-        <div class="logo-mark">ES</div>
-        <div class="logo-text">
-          ELITE <span>SECURITY</span> & NEXIS <span>SECURITY</span>
-        </div>
+  <div class="app-shell">
+    <!-- Sidebar (visible après "connexion") -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">NX</div>
+        <div class="logo-text">NEXIS <span>PLATFORM</span></div>
       </div>
-      <nav class="nav-links">
-        <a href="#solution">Solution</a>
-        <a href="#fonctionnalites">Fonctionnalités</a>
-        <a href="#casusage">Cas d’usage</a>
-        <a href="#conformite">Conformité</a>
-        <a href="#demo">Démonstration</a>
-        <a href="#apropos">À propos</a>
-      </nav>
-    </div>
-  </header>
+      <div class="sidebar-section-title">Navigation</div>
+      <ul class="nav-list">
+        <li class="nav-item active">Tableau de bord</li>
+        <li class="nav-item">RH & Agents</li>
+        <li class="nav-item">Sites & Opérations</li>
+        <li class="nav-item">Rondes</li>
+        <li class="nav-item">Interventions</li>
+        <li class="nav-item">Qualité & Audits</li>
+        <li class="nav-item">Clients</li>
+      </ul>
+      <div class="sidebar-section-title">Pays</div>
+      <ul class="nav-list">
+        <li class="nav-item">France</li>
+        <li class="nav-item">Sénégal</li>
+      </ul>
+    </aside>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-kicker">Plateforme de supervision 360° – Sécurité privée</div>
-          <h1 class="hero-title">
-            Pilotez vos opérations de sécurité privée, en France et en Afrique, depuis une seule plateforme.
-          </h1>
-          <p class="hero-subtitle">
-            Une solution institutionnelle complète pour superviser vos agents, sites, rondes, interventions, qualité et conformité,
-            avec une séparation stricte France / Sénégal et une approche alignée sur les exigences CNAPS et clients grands comptes.
-          </p>
-          <div class="hero-tags">
-            <span class="tag">Supervision 360°</span>
-            <span class="tag">Rondes avancées (QR / NFC / GPS)</span>
-            <span class="tag">RH & notation annuelle</span>
-            <span class="tag">Audits & qualité</span>
-            <span class="tag">Multi‑pays : France & Sénégal</span>
-          </div>
-          <div class="hero-actions">
-            <a href="#demo" class="btn btn-primary">Demander une démonstration</a>
-            <a href="#fonctionnalites" class="btn btn-outline">Découvrir les fonctionnalités</a>
-          </div>
-          <p class="hero-note">
-            Conçue par un dirigeant de sécurité privée, pour les exigences réelles du terrain, des autorités et des clients
-            institutionnels.
-          </p>
+    <!-- Main area -->
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-title">NEXIS PLATFORM – Supervision 360°</div>
+          <div class="topbar-env">Agence virtuelle – Sécurité privée</div>
         </div>
-        <div class="hero-card">
-          <h3>Vue dirigeant — Supervision globale multi‑pays</h3>
-          <p>
-            Suivez en temps réel la conformité de vos agents, sites et opérations, avec une séparation stricte France / Sénégal
-            et des tableaux de bord adaptés à chaque niveau (dirigeant, responsable, client).
-          </p>
-          <div class="hero-metrics">
-            <div class="metric">
-              <div class="metric-label">Agents conformes</div>
-              <div class="metric-value">92 %</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Rondes réalisées</div>
-              <div class="metric-value">98 %</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Interventions dans les SLA</div>
-              <div class="metric-value">95 %</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Sites audités</div>
-              <div class="metric-value">87 %</div>
-            </div>
+        <div class="topbar-right">
+          <span class="badge">France</span>
+          <span class="badge">Sénégal</span>
+          <div class="user-pill">
+            <div class="user-avatar">AZ</div>
+            <span>Dirigeant</span>
           </div>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <!-- SOLUTION -->
-    <section id="solution">
-      <div class="container">
-        <h2 class="section-title">Une réponse structurée aux enjeux du secteur</h2>
-        <p class="section-subtitle">
-          Le secteur de la sécurité privée souffre d’un manque de digitalisation, de traçabilité et de supervision fiable.
-          La plateforme ELITE & NEXIS apporte une réponse complète, pensée pour les exigences opérationnelles, institutionnelles
-          et réglementaires, en France et en Afrique francophone.
-        </p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Problèmes identifiés</h3>
-            <ul>
-              <li>Rondes non tracées ou peu fiables</li>
-              <li>Interventions sans suivi ni SLA</li>
-              <li>Gestion RH artisanale et non centralisée</li>
-              <li>Conformité CNAPS difficile à démontrer</li>
-              <li>Absence de supervision globale multi‑sites / multi‑pays</li>
-            </ul>
+      <!-- Écran de connexion -->
+      <div class="login-wrapper" id="login-screen">
+        <div class="login-grid">
+          <div>
+            <div class="sidebar-logo" style="margin-bottom:1rem;">
+              <div class="logo-mark">NX</div>
+              <div class="logo-text">NEXIS <span>PLATFORM</span></div>
+            </div>
+            <h1 class="login-hero-title">
+              Connectez-vous à votre agence virtuelle de sécurité privée.
+            </h1>
+            <p class="login-hero-subtitle">
+              Une plateforme unique pour superviser vos agents, sites, rondes, interventions, qualité et clients,
+              en France et au Sénégal, avec une approche institutionnelle et conforme.
+            </p>
+            <div class="login-tags">
+              <span class="tag">RH & Agents</span>
+              <span class="tag">Sites & rondes</span>
+              <span class="tag">Interventions SLA</span>
+              <span class="tag">Qualité & audits</span>
+              <span class="tag">Portail client</span>
+            </div>
+            <p class="login-note">
+              Cette interface est la base de votre future application complète.  
+              Aujourd’hui, elle fonctionne comme une agence virtuelle : vous pouvez la présenter à un client, un partenaire
+              ou un développeur comme maquette fonctionnelle.
+            </p>
           </div>
-          <div class="card">
-            <h3>Solution proposée</h3>
-            <ul>
-              <li>23 workflows métiers intégrés</li>
-              <li>Rondes avancées (QR / NFC / GPS / anti‑fraude)</li>
-              <li>Interventions avec SLA, escalade et urgence</li>
-              <li>Notation annuelle automatique des agents</li>
-              <li>Audits qualité et supervision 360° dirigeant</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Positionnement</h3>
-            <ul>
-              <li>Plateforme premium institutionnelle</li>
-              <li>Adaptée France & Afrique francophone</li>
-              <li>Architecture scalable et sécurisée</li>
-              <li>Conçue par un dirigeant du métier</li>
-            </ul>
+          <div class="login-card">
+            <h2>Connexion à la plateforme</h2>
+            <p>Entrez vos identifiants pour accéder au tableau de bord de supervision 360°.</p>
+            <form onsubmit="event.preventDefault(); enterApp();">
+              <div class="form-group">
+                <label>Adresse email professionnelle</label>
+                <input type="email" placeholder="vous@entreprise.com" required>
+              </div>
+              <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" placeholder="••••••••" required>
+              </div>
+              <div class="form-footer">
+                <span class="link-muted">Mot de passe oublié ?</span>
+                <span class="link-muted">Créer un accès dirigeant</span>
+              </div>
+              <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+            <div class="login-meta">
+              En environnement de démonstration, ce bouton simule l’accès à l’application.  
+              Dans la version développée, il sera relié à une API d’authentification sécurisée.
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- FONCTIONNALITÉS -->
-    <section id="fonctionnalites">
-      <div class="container">
-        <h2 class="section-title">Fonctionnalités clés de la plateforme</h2>
-        <p class="section-subtitle">
-          Une couverture fonctionnelle complète, structurée autour des besoins réels d’une entreprise de sécurité privée moderne,
-          avec des vues adaptées à chaque profil (dirigeant, responsable, client, agent).
-        </p>
-        <div class="grid-3">
-          <div class="card">
-            <span class="pill">RH & Agents</span>
-            <h3>Gestion RH professionnelle</h3>
-            <ul>
-              <li>Fiches agents complètes (FR / SN)</li>
-              <li>Documents & contrats par pays</li>
-              <li>Formations, recyclages & habilitations</li>
-              <li>Notation ponctuelle & annuelle</li>
-              <li>Gestion disciplinaire structurée</li>
-            </ul>
+      <!-- Tableau de bord (visible après "connexion") -->
+      <div class="dashboard" id="dashboard">
+        <div class="dash-grid">
+          <div class="panel">
+            <h3>Vue dirigeant – Supervision globale</h3>
+            <p class="panel-sub">
+              Indicateurs consolidés France / Sénégal : conformité agents, rondes, interventions, qualité, engagements clients.
+            </p>
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Conformité agents</div>
+                <div class="kpi-value success">92 %</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Rondes réalisées</div>
+                <div class="kpi-value success">98 %</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Interventions dans les SLA</div>
+                <div class="kpi-value success">95 %</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Non‑conformités ouvertes</div>
+                <div class="kpi-value danger">7</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Sites audités (30j)</div>
+                <div class="kpi-value">87 %</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Clients avec portail actif</div>
+                <div class="kpi-value">14</div>
+              </div>
+            </div>
           </div>
-          <div class="card">
-            <span class="pill">Opérations</span>
-            <h3>Sites, rondes & interventions</h3>
-            <ul>
-              <li>Sites, consignes, risques, documents</li>
-              <li>Planning multi‑sites avec conformité automatique</li>
-              <li>Rondes avancées anti‑fraude (GPS, points dynamiques)</li>
-              <li>Interventions avec SLA, escalade et rapports</li>
-              <li>Main courante et rapports PDF</li>
-            </ul>
-          </div>
-          <div class="card">
-            <span class="pill">Qualité & Supervision</span>
-            <h3>Qualité & supervision 360°</h3>
-            <ul>
-              <li>Audits sites, agents, matériel</li>
-              <li>Non‑conformités & actions correctives</li>
-              <li>Tableaux de bord dirigeant multi‑pays</li>
-              <li>Heatmaps incidents & statistiques avancées</li>
-              <li>Vue client dédiée (sites, rondes, interventions)</li>
-            </ul>
+          <div class="panel">
+            <h3>Modules de la plateforme</h3>
+            <p class="panel-sub">
+              Les modules ci‑dessous correspondent à l’architecture fonctionnelle que nous avons définie.  
+              Ils serviront de base directe au développement de l’application.
+            </p>
+            <div class="module-grid">
+              <div class="module-card">
+                <div class="module-title">RH & Agents</div>
+                <div class="module-desc">Fiches agents, documents, contrats, formations, discipline, notation annuelle.</div>
+                <div class="module-tag">Base de l’agence</div>
+              </div>
+              <div class="module-card">
+                <div class="module-title">Sites & Opérations</div>
+                <div class="module-desc">Sites, consignes, risques, planning, main courante.</div>
+                <div class="module-tag">Exploitation</div>
+              </div>
+              <div class="module-card">
+                <div class="module-title">Rondes</div>
+                <div class="module-desc">QR, NFC, GPS, anti‑fraude, rapports de rondes.</div>
+                <div class="module-tag">Contrôle terrain</div>
+              </div>
+              <div class="module-card">
+                <div class="module-title">Interventions</div>
+                <div class="module-desc">SLA, escalade, urgence, rapports PDF.</div>
+                <div class="module-tag">Réactivité</div>
+              </div>
+              <div class="module-card">
+                <div class="module-title">Qualité & Audits</div>
+                <div class="module-desc">Audits, non‑conformités, actions correctives, tableaux de bord.</div>
+                <div class="module-tag">Conformité</div>
+              </div>
+              <div class="module-card">
+                <div class="module-title">Portail client</div>
+                <div class="module-desc">Accès sécurisé aux sites, rondes, interventions, rapports.</div>
+                <div class="module-tag">Relation client</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CAS D'USAGE -->
-    <section id="casusage">
-      <div class="container two-col">
-        <div>
-          <h2 class="section-title">Cas d’usage et scénarios concrets</h2>
-          <p class="section-subtitle">
-            La plateforme est conçue pour répondre à des situations opérationnelles concrètes, avec une traçabilité exploitable
-            auprès des clients, des autorités et de la direction.
+        <div class="panel">
+          <h3>Activité récente (maquette fonctionnelle)</h3>
+          <p class="panel-sub">
+            Cette section illustre le type de journal d’activité que la plateforme pourra générer : rondes, interventions,
+            audits, actions qualité, accès clients.
           </p>
-          <ul class="list">
-            <li><span class="highlight">Sites sensibles :</span> supervision renforcée des rondes, incidents et interventions.</li>
-            <li><span class="highlight">Clients grands comptes :</span> accès dédié avec reporting structuré et exportable.</li>
-            <li><span class="highlight">Multi‑pays :</span> gestion séparée France / Sénégal, avec indicateurs consolidés.</li>
-            <li><span class="highlight">Cynophile :</span> gestion du binôme agent + chien, suivi des interventions et rondes.</li>
-            <li><span class="highlight">Qualité & audits :</span> préparation des audits clients, internes ou réglementaires.</li>
+          <ul class="activity-list">
+            <li class="activity-item">
+              <div>
+                <div class="activity-main">Ronde GPS – Site “Siège client A” – France</div>
+                <div class="activity-meta">Agent : M. D. – 06:42 – 12 points contrôlés – aucune anomalie</div>
+              </div>
+              <span class="badge">Ronde</span>
+            </li>
+            <li class="activity-item">
+              <div>
+                <div class="activity-main">Intervention urgente – Site “Plateforme logistique B” – Sénégal</div>
+                <div class="activity-meta">Arrivée dans le SLA – rapport PDF généré et transmis au client</div>
+              </div>
+              <span class="badge">Intervention</span>
+            </li>
+            <li class="activity-item">
+              <div>
+                <div class="activity-main">Audit qualité – Site “Data center C” – France</div>
+                <div class="activity-meta">2 non‑conformités – plan d’actions ouvert – suivi à J+15</div>
+              </div>
+              <span class="badge">Qualité</span>
+            </li>
+            <li class="activity-item">
+              <div>
+                <div class="activity-main">Activation portail client – Groupe D</div>
+                <div class="activity-meta">Accès aux rondes, interventions, rapports – multi‑sites France / Sénégal</div>
+              </div>
+              <span class="badge">Client</span>
+            </li>
           </ul>
         </div>
-        <div>
-          <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Maquettes & vues applicatives</h3>
-          <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.6rem;">
-            Les écrans ci‑dessous illustrent la structuration future de l’application : vue dirigeant, vue opérations,
-            vue qualité et vue client. Ils servent de base de travail pour le développement.
-          </p>
-          <div class="mockups-grid">
-            <div class="mockup">
-              <div>
-                <div class="mockup-title">Vue dirigeant</div>
-                <p>Tableaux de bord consolidés : conformité agents, rondes, interventions, NC, par pays et par client.</p>
-              </div>
-              <div>
-                <span class="badge">Multi‑pays</span>
-                <span class="badge">KPI</span>
-              </div>
-            </div>
-            <div class="mockup">
-              <div>
-                <div class="mockup-title">Vue opérations</div>
-                <p>Planning, rondes, interventions, main courante, avec alertes en temps réel et suivi des SLA.</p>
-              </div>
-              <div>
-                <span class="badge">Rondes</span>
-                <span class="badge">Interventions</span>
-              </div>
-            </div>
-            <div class="mockup">
-              <div>
-                <div class="mockup-title">Vue client</div>
-                <p>Accès sécurisé aux sites, rapports, rondes et interventions, avec téléchargement des PDF.</p>
-              </div>
-              <div>
-                <span class="badge">Portail client</span>
-                <span class="badge">Reporting</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONFORMITÉ & DÉONTOLOGIE -->
-    <section id="conformite">
-      <div class="container">
-        <h2 class="section-title">Conformité, déontologie & cadre institutionnel</h2>
-        <p class="section-subtitle">
-          La plateforme s’inscrit dans une démarche de conformité et de professionnalisation du secteur, en cohérence avec
-          les exigences réglementaires, déontologiques et contractuelles.
-        </p>
-        <div class="compliance-grid">
-          <div class="compliance-item">
-            <div class="compliance-label">Réglementation & CNAPS</div>
-            <p>
-              Structuration des données et des processus pour faciliter la démonstration de conformité (CNAPS, obligations
-              légales, traçabilité des interventions et rondes, archivage des rapports).
-            </p>
-          </div>
-          <div class="compliance-item">
-            <div class="compliance-label">Déontologie & professionnalisme</div>
-            <p>
-              Approche centrée sur la rigueur, la transparence et la qualité de service, avec des outils de suivi des
-              engagements contractuels et des niveaux de service.
-            </p>
-          </div>
-          <div class="compliance-item">
-            <div class="compliance-label">Données & sécurité</div>
-            <p>
-              Architecture pensée pour un hébergement sécurisé, une séparation des environnements par pays et une gestion
-              maîtrisée des accès (dirigeant, responsable, client, agent).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AVANTAGES + DEMO -->
-    <section id="avantages">
-      <div class="container two-col">
-        <div>
-          <h2 class="section-title">Avantages clés pour votre structure</h2>
-          <p class="section-subtitle">
-            La plateforme a été pensée pour offrir des avantages concrets, mesurables, et directement exploitables dans votre
-            organisation, en France comme au Sénégal.
-          </p>
-          <ul class="list">
-            <li><span class="highlight">Anti‑fraude rondes :</span> contrôle GPS, points dynamiques, détection d’anomalies.</li>
-            <li><span class="highlight">Multi‑pays :</span> séparation stricte des données France / Sénégal.</li>
-            <li><span class="highlight">Cynophile :</span> gestion complète du binôme agent + chien.</li>
-            <li><span class="highlight">RH structurée :</span> notation annuelle, discipline, formations, habilitations.</li>
-            <li><span class="highlight">Supervision 360° :</span> vue dirigeant, responsable, client.</li>
-            <li><span class="highlight">Architecture scalable :</span> prête pour une montée en charge et une expansion.</li>
-          </ul>
-        </div>
-        <div class="contact-card" id="demo">
-          <h3>Demander une démonstration</h3>
-          <p style="margin-bottom:0.8rem;color:var(--muted);">
-            Laissez vos coordonnées pour organiser une présentation ciblée de la plateforme et de ses cas d’usage.
-          </p>
-          <form>
-            <label>Nom / Prénom</label>
-            <input type="text" placeholder="Votre nom complet">
-            <label>Entreprise</label>
-            <input type="text" placeholder="Nom de votre structure">
-            <label>Email professionnel</label>
-            <input type="email" placeholder="adresse@entreprise.com">
-            <label>Message</label>
-            <textarea placeholder="Précisez vos besoins, votre contexte, vos attentes."></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.4rem;">
-              Envoyer la demande de démonstration
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- A PROPOS -->
-    <section id="apropos">
-      <div class="container">
-        <h2 class="section-title">À propos d’ELITE SECURITY & NEXIS SECURITY</h2>
-        <p class="section-subtitle">
-          Une plateforme portée par un dirigeant de sécurité privée, pour répondre aux exigences du terrain, des clients et des
-          autorités, avec une double implantation France / Sénégal.
-        </p>
-        <div class="two-col">
-          <div>
-            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">ELITE SECURITY — Sénégal</h3>
-            <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
-              Société de sécurité privée implantée au Sénégal, avec une expertise opérationnelle terrain, une connaissance fine
-              des contraintes locales et des attentes des clients institutionnels et privés.
-            </p>
-            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">NEXIS SECURITY — France</h3>
-            <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.8rem;">
-              Structure française positionnée sur un segment premium, conforme aux exigences CNAPS, avec une approche
-              institutionnelle et une volonté de digitalisation avancée du métier de la sécurité privée.
-            </p>
-          </div>
-          <div>
-            <h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Direction & expertise</h3>
-            <p style="font-size:0.88rem;color:var(--muted);">
-              La plateforme est portée par El Hadji Abdoul Aziz N’DIAYE, dirigeant des deux structures, diplômé RNCP niveau 6,
-              certifié SSIAP, CQP/APS, et membre de jury TP01373.  
-              Cette double légitimité terrain + institutionnelle garantit une solution alignée avec les réalités du métier,
-              les attentes des clients et les exigences réglementaires.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        © 2026 ELITE SECURITY & NEXIS SECURITY — Tous droits réservés.
-      </div>
-      <div class="footer-links">
-        <a href="#top">Retour en haut</a>
-        <a href="#">Mentions légales</a>
-        <a href="#">Politique de confidentialité</a>
-        <a href="#demo">Contact / Démo</a>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <script>
+    function enterApp() {
+      // Simulation : on masque l'écran de login et on affiche le "dashboard"
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('sidebar').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>
+
 
