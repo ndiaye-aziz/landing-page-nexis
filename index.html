@@ -5,6 +5,7 @@
   <title>NEXIS PLATFORM – Supervision 360°</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Plateforme de supervision 360° pour la sécurité privée : RH, sites, rondes, interventions, qualité, clients.">
+
   <style>
     :root {
       --bg: #020617;
@@ -18,14 +19,18 @@
       --danger: #ef4444;
       --success: #22c55e;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
       color: var(--text);
       min-height: 100vh;
     }
+
     a { color: var(--accent); text-decoration: none; }
+
     .app-shell { display: flex; min-height: 100vh; }
 
     /* SIDEBAR */
@@ -37,12 +42,14 @@
       display: none;
       flex-direction: column;
     }
+
     .sidebar-logo {
       display: flex;
       align-items: center;
       gap: 0.6rem;
       margin-bottom: 1.5rem;
     }
+
     .logo-mark {
       width: 30px;
       height: 30px;
@@ -55,13 +62,16 @@
       font-weight: 600;
       color: var(--accent);
     }
+
     .logo-text {
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .logo-text span { color: var(--accent); }
+
     .sidebar-section-title {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -69,25 +79,30 @@
       color: var(--muted);
       margin: 1rem 0 0.4rem;
     }
+
     .nav-list { list-style: none; font-size: 0.88rem; }
+
     .nav-item {
       padding: 0.45rem 0.4rem;
       border-radius: 0.4rem;
       color: var(--muted);
       cursor: pointer;
     }
+
     .nav-item:hover {
       background: #0b1120;
       color: var(--text);
     }
+
     .nav-item.active {
       background: #111827;
       color: var(--accent);
       border: 1px solid var(--border);
     }
 
-    /* MAIN */
+    /* TOPBAR */
     .main { flex: 1; display: flex; flex-direction: column; }
+
     .topbar {
       height: 56px;
       border-bottom: 1px solid var(--border);
@@ -98,8 +113,10 @@
       justify-content: space-between;
       padding: 0 1.5rem;
     }
+
     .topbar-left { display: flex; align-items: center; gap: 0.8rem; }
     .topbar-title { font-size: 0.9rem; font-weight: 500; }
+
     .topbar-env {
       font-size: 0.75rem;
       color: var(--muted);
@@ -107,6 +124,7 @@
       border: 1px solid var(--border);
       padding: 0.15rem 0.6rem;
     }
+
     .topbar-right {
       font-size: 0.8rem;
       color: var(--muted);
@@ -114,6 +132,7 @@
       align-items: center;
       gap: 0.8rem;
     }
+
     .user-pill {
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -122,6 +141,7 @@
       align-items: center;
       gap: 0.4rem;
     }
+
     .user-avatar {
       width: 20px;
       height: 20px;
@@ -131,545 +151,30 @@
       align-items: center;
       justify-content: center;
       font-size: 0.7rem;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.15rem 0.55rem;
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-right: 0.3rem;
-    }
-
-    /* LOGIN */
-    .login-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-    }
-    .login-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      max-width: 1000px;
-      width: 100%;
-    }
-    .login-hero-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .login-hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 28rem;
-      margin-bottom: 1.2rem;
-    }
-    .login-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      margin-bottom: 1.4rem;
-    }
-    .tag {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.7rem;
-      color: var(--muted);
-    }
-    .login-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      max-width: 26rem;
-    }
-    .login-card {
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 1.5rem;
-      font-size: 0.88rem;
-    }
-    .login-card h2 { font-size: 0.95rem; margin-bottom: 0.4rem; }
-    .login-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
-    .form-group { margin-bottom: 0.8rem; }
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.2rem;
-    }
-    .form-group input {
-      width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      padding: 0.5rem 0.6rem;
-      font-size: 0.85rem;
-    }
-    .form-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.6rem;
-      font-size: 0.8rem;
-    }
-    .link-muted { color: var(--muted); cursor: pointer; }
-    .link-muted:hover { color: var(--text); }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent-soft);
-      color: #f9fafb;
-      width: 100%;
-      margin-top: 0.6rem;
-    }
-    .btn-primary:hover { background: var(--accent-soft); }
-    .login-meta {
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* CONTENT AREAS */
-    .content {
-      flex: 1;
-      padding: 1.5rem;
-      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%);
-      overflow-y: auto;
-    }
-    .panel {
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 1.2rem;
-      font-size: 0.88rem;
-      margin-bottom: 1.2rem;
-    }
-    .panel h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
-    .panel-sub {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-    }
-    .dash-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      margin-top: 0.6rem;
-    }
-    .kpi {
-      border-radius: 0.7rem;
-      border: 1px solid var(--border);
-      padding: 0.6rem 0.7rem;
-      font-size: 0.8rem;
-    }
-    .kpi-label { color: var(--muted); margin-bottom: 0.2rem; }
-    .kpi-value { font-size: 0.95rem; font-weight: 500; }
-    .kpi-value.success { color: var(--success); }
-    .kpi-value.danger { color: var(--danger); }
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 0.6rem;
-    }
-    .module-card {
-      border-radius: 0.7rem;
-      border: 1px solid var(--border);
-      background: #020617;
-      padding: 0.7rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-    .module-title { font-size: 0.85rem; margin-bottom: 0.2rem; }
-    .module-desc { font-size: 0.78rem; color: var(--muted); }
-    .module-tag {
-      display: inline-block;
-      margin-top: 0.3rem;
-      font-size: 0.7rem;
-      color: var(--muted);
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.1rem 0.5rem;
-    }
-    .activity-list { list-style: none; font-size: 0.8rem; }
-    .activity-item {
-      padding: 0.4rem 0;
-      border-bottom: 1px solid #111827;
-      display: flex;
-      justify-content: space-between;
-      gap: 0.6rem;
-    }
-    .activity-main { color: var(--text); }
-    .activity-meta { font-size: 0.75rem; color: var(--muted); }
-
-    /* RH & AGENTS PAGE */
-    .page-title {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-    .page-subtitle {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-    .toolbar-left, .toolbar-right {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .input-sm {
-      border-radius: 0.5rem;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      padding: 0.35rem 0.6rem;
-      font-size: 0.8rem;
-    }
-    .btn-sm {
-      padding: 0.35rem 0.8rem;
-      font-size: 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      cursor: pointer;
-    }
-    .btn-sm.primary {
-      background: var(--accent);
-      border-color: var(--accent-soft);
-    }
-    .btn-sm.primary:hover { background: var(--accent-soft); }
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-    }
-    .table th, .table td {
-      padding: 0.45rem 0.5rem;
-      border-bottom: 1px solid #111827;
-      text-align: left;
-    }
-    .table th {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .status-pill {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.1rem 0.5rem;
-      font-size: 0.7rem;
-      display: inline-block;
-    }
-    .status-ok { color: var(--success); border-color: var(--success); }
-    .status-warn { color: #f97316; border-color: #f97316; }
-    .status-bad { color: var(--danger); border-color: var(--danger); }
-
-    @media (max-width: 900px) {
-      .login-grid, .dash-grid { grid-template-columns: minmax(0, 1fr); }
-      .sidebar { display: none !important; }
-    }.site-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.site-card {
-  border-radius: 0.8rem;
-  border: 1px solid var(--border);
-  background: #020617;
-  padding: 1rem;
-}
-
-.site-card-header {
-  margin-bottom: 0.6rem;
-}
-
-.site-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.site-client {
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.site-info {
-  font-size: 0.78rem;
-  margin-bottom: 0.8rem;
-  color: var(--text);
-}
-
-.site-actions {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-  </style>
+    }</style>
 </head>
+
 <body>
   <div class="app-shell">
-    <!-- Sidebar -->
+
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
         <div class="logo-mark">NX</div>
         <div class="logo-text">NEXIS <span>PLATFORM</span></div>
       </div>
-      <!-- PAGE SITES & OPERATIONS -->
-<div id="page-sites" style="display:none;">
-
-  <div class="panel">
-    <div class="page-title">Sites & Opérations – Vue dirigeant</div>
-    <div class="page-subtitle">
-      Gestion complète des sites, consignes, risques, rondes, interventions et audits.
-      Vue mixte : cartes intelligentes + tableau professionnel.
-    </div>
-
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="toolbar-left">
-        <input class="input-sm" type="text" placeholder="Rechercher un site (nom, client, adresse)…">
-        <select class="input-sm">
-          <option>France & Sénégal</option>
-          <option>France</option>
-          <option>Sénégal</option>
-        </select>
-        <select class="input-sm">
-          <option>Type : tous</option>
-          <option>Industriel</option>
-          <option>Logistique</option>
-          <option>Tertiaire</option>
-          <option>Sensible</option>
-          <option>Événementiel</option>
-        </select>
-        <select class="input-sm">
-          <option>Statut : tous</option>
-          <option>Actif</option>
-          <option>En audit</option>
-          <option>Suspendu</option>
-        </select>
-      </div>
-      <div class="toolbar-right">
-        <button class="btn-sm">Exporter (CSV)</button>
-        <button class="btn-sm primary">Créer un site</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cartes intelligentes -->
-  <div class="panel">
-    <h3>Sites supervisés</h3>
-    <p class="panel-sub">Vue intelligente : risques, conformité, rondes, interventions, audits.</p>
-
-    <div class="site-grid">
-      <!-- Carte 1 -->
-      <div class="site-card">
-        <div class="site-card-header">
-          <div class="site-title">Site A – Siège Client</div>
-          <div class="site-client">Client : Groupe Alpha</div>
-        </div>
-        <div class="site-info">
-          <div><strong>Adresse :</strong> Paris 15e</div>
-          <div><strong>Risques :</strong> Incendie, Intrusion</div>
-          <div><strong>Conformité :</strong> <span class="status-pill status-ok">94 %</span></div>
-          <div><strong>Dernière ronde :</strong> 06:42</div>
-          <div><strong>Dernière intervention :</strong> J‑2</div>
-          <div><strong>Dernier audit :</strong> Conforme</div>
-        </div>
-        <div class="site-actions">
-          <button class="btn-sm">Rondes</button>
-          <button class="btn-sm">Interventions</button>
-          <button class="btn-sm">Audits</button>
-          <button class="btn-sm">Consignes</button>
-        </div>
-      </div>
-
-      <!-- Carte 2 -->
-      <div class="site-card">
-        <div class="site-card-header">
-          <div class="site-title">Site B – Plateforme Logistique</div>
-          <div class="site-client">Client : TransLog</div>
-        </div>
-        <div class="site-info">
-          <div><strong>Adresse :</strong> Dakar</div>
-          <div><strong>Risques :</strong> Vol, Zone isolée</div>
-          <div><strong>Conformité :</strong> <span class="status-pill status-warn">78 %</span></div>
-          <div><strong>Dernière ronde :</strong> 03:12</div>
-          <div><strong>Dernière intervention :</strong> J‑1</div>
-          <div><strong>Dernier audit :</strong> 2 NC</div>
-        </div>
-        <div class="site-actions">
-          <button class="btn-sm">Rondes</button>
-          <button class="btn-sm">Interventions</button>
-          <button class="btn-sm">Audits</button>
-          <button class="btn-sm">Consignes</button>
-        </div>
-      </div>
-
-      <!-- Carte 3 -->
-      <div class="site-card">
-        <div class="site-card-header">
-          <div class="site-title">Site C – Data Center</div>
-          <div class="site-client">Client : TechCorp</div>
-        </div>
-        <div class="site-info">
-          <div><strong>Adresse :</strong> Lyon</div>
-          <div><strong>Risques :</strong> Incendie, Matériel critique</div>
-          <div><strong>Conformité :</strong> <span class="status-pill status-bad">62 %</span></div>
-          <div><strong>Dernière ronde :</strong> 01:55</div>
-          <div><strong>Dernière intervention :</strong> J‑5</div>
-          <div><strong>Dernier audit :</strong> 4 NC</div>
-        </div>
-        <div class="site-actions">
-          <button class="btn-sm">Rondes</button>
-          <button class="btn-sm">Interventions</button>
-          <button class="btn-sm">Audits</button>
-          <button class="btn-sm">Consignes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tableau professionnel -->
-  <div class="panel">
-    <h3>Tableau des sites</h3>
-    <p class="panel-sub">Vue détaillée : conformité, risques, rondes, interventions, audits.</p>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Site</th>
-          <th>Client</th>
-          <th>Pays</th>
-          <th>Risques</th>
-          <th>Conformité</th>
-          <th>Rondes (30j)</th>
-          <th>Interventions (30j)</th>
-          <th>Audits</th>
-          <th>Statut</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Site A – Siège</td>
-          <td>Groupe Alpha</td>
-          <td>France</td>
-          <td>Incendie, Intrusion</td>
-          <td><span class="status-pill status-ok">94 %</span></td>
-          <td>98 %</td>
-          <td>95 %</td>
-          <td>Conforme</td>
-          <td>Actif</td>
-          <td><button class="btn-sm">Ouvrir</button></td>
-        </tr>
-        <tr>
-          <td>Site B – Logistique</td>
-          <td>TransLog</td>
-          <td>Sénégal</td>
-          <td>Vol, Zone isolée</td>
-          <td><span class="status-pill status-warn">78 %</span></td>
-          <td>87 %</td>
-          <td>92 %</td>
-          <td>2 NC</td>
-          <td>En audit</td>
-          <td><button class="btn-sm">Ouvrir</button></td>
-        </tr>
-        <tr>
-          <td>Site C – Data Center</td>
-          <td>TechCorp</td>
-          <td>France</td>
-          <td>Incendie, Matériel critique</td>
-          <td><span class="status-pill status-bad">62 %</span></td>
-          <td>72 %</td>
-          <td>80 %</td>
-          <td>4 NC</td>
-          <td>Suspendu</td>
-          <td><button class="btn-sm">Ouvrir</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Lecture métier -->
-  <div class="panel">
-    <h3>Lecture métier</h3>
-    <p class="panel-sub">Analyse opérationnelle des sites supervisés.</p>
-
-    <ul class="activity-list">
-      <li class="activity-item">
-        <div>
-          <div class="activity-main">Sites non conformes</div>
-          <div class="activity-meta">Blocage automatique des rondes et interventions sensibles.</div>
-        </div>
-        <span class="badge">Conformité</span>
-      </li>
-      <li class="activity-item">
-        <div>
-          <div class="activity-main">Sites en audit</div>
-          <div class="activity-meta">Suivi des NC et actions correctives.</div>
-        </div>
-        <span class="badge">Qualité</span>
-      </li>
-      <li class="activity-item">
-        <div>
-          <div class="activity-main">Sites sensibles</div>
-          <div class="activity-meta">Procédures renforcées : incendie, intrusion, matériel critique.</div>
-        </div>
-        <span class="badge">Sécurité</span>
-      </li>
-    </ul>
-  </div>
-
-</div>
 
       <div class="sidebar-section-title">Navigation</div>
       <ul class="nav-list">
         <li class="nav-item active" data-page="dashboard">Tableau de bord</li>
+        <li class="nav-item" data-page="sites">Sites & Opérations</li>
         <li class="nav-item" data-page="rh">RH & Agents</li>
-        <li class="nav-item">Sites & Opérations</li>
-        <li class="nav-item">Rondes</li>
-        <li class="nav-item">Interventions</li>
-        <li class="nav-item">Qualité & Audits</li>
-        <li class="nav-item">Clients</li>
+        <li class="nav-item" data-page="rondes">Rondes</li>
+        <li class="nav-item" data-page="interventions">Interventions</li>
+        <li class="nav-item" data-page="qualite">Qualité & Audits</li>
+        <li class="nav-item" data-page="clients">Clients</li>
       </ul>
+
       <div class="sidebar-section-title">Pays</div>
       <ul class="nav-list">
         <li class="nav-item">France</li>
@@ -677,8 +182,10 @@
       </ul>
     </aside>
 
-    <!-- Main -->
+    <!-- MAIN -->
     <div class="main">
+
+      <!-- TOPBAR -->
       <header class="topbar">
         <div class="topbar-left">
           <div class="topbar-title">NEXIS PLATFORM – Supervision 360°</div>
@@ -694,21 +201,25 @@
         </div>
       </header>
 
-      <!-- LOGIN -->
+      <!-- LOGIN SCREEN -->
       <div class="login-wrapper" id="login-screen">
         <div class="login-grid">
+
           <div>
             <div class="sidebar-logo" style="margin-bottom:1rem;">
               <div class="logo-mark">NX</div>
               <div class="logo-text">NEXIS <span>PLATFORM</span></div>
             </div>
+
             <h1 class="login-hero-title">
               Connectez-vous à votre agence virtuelle de sécurité privée.
             </h1>
+
             <p class="login-hero-subtitle">
               Une plateforme unique pour superviser vos agents, sites, rondes, interventions, qualité et clients,
               en France et au Sénégal, avec une approche institutionnelle et conforme.
             </p>
+
             <div class="login-tags">
               <span class="tag">RH & Agents</span>
               <span class="tag">Sites & rondes</span>
@@ -716,162 +227,149 @@
               <span class="tag">Qualité & audits</span>
               <span class="tag">Portail client</span>
             </div>
+
             <p class="login-note">
               Cette interface est la base de votre future application complète.  
               Aujourd’hui, elle fonctionne comme une agence virtuelle : vous pouvez la présenter à un client, un partenaire
               ou un développeur comme maquette fonctionnelle.
             </p>
           </div>
-          <div class="login-card">
-            <h2>Connexion à la plateforme</h2>
-            <p>Entrez vos identifiants pour accéder au tableau de bord de supervision 360°.</p>
-            <form onsubmit="event.preventDefault(); enterApp();">
-              <div class="form-group">
-                <label>Adresse email professionnelle</label>
-                <input type="email" placeholder="vous@entreprise.com" required>
-              </div>
-              <div class="form-group">
-                <label>Mot de passe</label>
-                <input type="password" placeholder="••••••••" required>
-              </div>
-              <div class="form-footer">
-                <span class="link-muted">Mot de passe oublié ?</span>
-                <span class="link-muted">Créer un accès dirigeant</span>
-              </div>
-              <button type="submit" class="btn btn-primary">Se connecter</button>
-            </form>
-            <div class="login-meta">
-              En environnement de démonstration, ce bouton simule l’accès à l’application.  
-              Dans la version développée, il sera relié à une API d’authentification sécurisée.
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- CONTENT -->
-      <div class="content" id="content" style="display:none;">
-        <!-- PAGE DASHBOARD -->
+          <div class="login-card">
+            <h2>Connexion à la plateforme
+                      <!-- PAGE DASHBOARD -->
         <div id="page-dashboard">
           <div class="dash-grid">
+
             <div class="panel">
               <h3>Vue dirigeant – Supervision globale</h3>
               <p class="panel-sub">
                 Indicateurs consolidés France / Sénégal : conformité agents, rondes, interventions, qualité, engagements clients.
               </p>
+
               <div class="kpi-grid">
                 <div class="kpi">
                   <div class="kpi-label">Conformité agents</div>
                   <div class="kpi-value success">92 %</div>
                 </div>
+
                 <div class="kpi">
                   <div class="kpi-label">Rondes réalisées</div>
                   <div class="kpi-value success">98 %</div>
                 </div>
+
                 <div class="kpi">
                   <div class="kpi-label">Interventions dans les SLA</div>
                   <div class="kpi-value success">95 %</div>
                 </div>
+
                 <div class="kpi">
                   <div class="kpi-label">Non‑conformités ouvertes</div>
                   <div class="kpi-value danger">7</div>
                 </div>
+
                 <div class="kpi">
                   <div class="kpi-label">Sites audités (30j)</div>
                   <div class="kpi-value">87 %</div>
                 </div>
+
                 <div class="kpi">
                   <div class="kpi-label">Clients avec portail actif</div>
                   <div class="kpi-value">14</div>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <h3>Modules de la plateforme</h3>
-              <p class="panel-sub">
-                Les modules ci‑dessous correspondent à l’architecture fonctionnelle définie.  
-                Ils serviront de base directe au développement de l’application.
-              </p>
-              <div class="module-grid">
-                <div class="module-card" onclick="showPage('rh');">
-                  <div class="module-title">RH & Agents</div>
-                  <div class="module-desc">Fiches agents, documents, contrats, formations, discipline, notation annuelle.</div>
-                  <div class="module-tag">Base de l’agence</div>
-                </div>
-                <div class="module-card">
-                  <div class="module-title">Sites & Opérations</div>
-                  <div class="module-desc">Sites, consignes, risques, planning, main courante.</div>
-                  <div class="module-tag">Exploitation</div>
-                </div>
-                <div class="module-card">
-                  <div class="module-title">Rondes</div>
-                  <div class="module-desc">QR, NFC, GPS, anti‑fraude, rapports de rondes.</div>
-                  <div class="module-tag">Contrôle terrain</div>
-                </div>
-                <div class="module-card">
-                  <div class="module-title">Interventions</div>
-                  <div class="module-desc">SLA, escalade, urgence, rapports PDF.</div>
-                  <div class="module-tag">Réactivité</div>
-                </div>
-                <div class="module-card">
-                  <div class="module-title">Qualité & Audits</div>
-                  <div class="module-desc">Audits, non‑conformités, actions correctives, tableaux de bord.</div>
-                  <div class="module-tag">Conformité</div>
-                </div>
-                <div class="module-card">
-                  <div class="module-title">Portail client</div>
-                  <div class="module-desc">Accès sécurisé aux sites, rondes, interventions, rapports.</div>
-                  <div class="module-tag">Relation client</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- PAGE SITES & OPERATIONS -->
+        <div id="page-sites" style="display:none;">
 
           <div class="panel">
-            <h3>Activité récente (maquette fonctionnelle)</h3>
-            <p class="panel-sub">
-              Exemple de journal d’activité : rondes, interventions, audits, actions qualité, accès clients.
-            </p>
-            <ul class="activity-list">
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Ronde GPS – Site “Siège client A” – France</div>
-                  <div class="activity-meta">Agent : M. D. – 06:42 – 12 points contrôlés – aucune anomalie</div>
-                </div>
-                <span class="badge">Ronde</span>
-              </li>
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Intervention urgente – Site “Plateforme logistique B” – Sénégal</div>
-                  <div class="activity-meta">Arrivée dans le SLA – rapport PDF généré et transmis au client</div>
-                </div>
-                <span class="badge">Intervention</span>
-              </li>
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Audit qualité – Site “Data center C” – France</div>
-                  <div class="activity-meta">2 non‑conformités – plan d’actions ouvert – suivi à J+15</div>
-                </div>
-                <span class="badge">Qualité</span>
-              </li>
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Activation portail client – Groupe D</div>
-                  <div class="activity-meta">Accès aux rondes, interventions, rapports – multi‑sites France / Sénégal</div>
-                </div>
-                <span class="badge">Client</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+            <div class="page-title">Sites & Opérations – Vue dirigeant</div>
+            <div class="page-subtitle">
+              Gestion complète des sites, consignes, risques, rondes, interventions et audits.
+              Vue mixte : cartes intelligentes + tableau professionnel.
+            </div>
 
-        <!-- PAGE RH & AGENTS -->
+            <!-- Toolbar -->
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <input class="input-sm" type="text" placeholder="Rechercher un site (nom, client, adresse)…">
+                <select class="input-sm">
+                  <option>France & Sénégal</option>
+                  <option>France</option>
+                  <option>Sénégal</option>
+                </select>
+                <select class="input-sm">
+                  <option>Type : tous</option>
+                  <option>Industriel</option>
+                  <option>Logistique</option>
+                  <option>Tertiaire</option>
+                  <option>Sensible</option>
+                  <option>Événementiel</option>
+                </select>
+                <select class="input-sm">
+                  <option>Statut : tous</option>
+                  <option>Actif</option>
+                  <option>En audit</option>
+                  <option>Suspendu</option>
+                </select>
+              </div>
+
+              <div class="toolbar-right">
+                <button class="btn-sm">Exporter (CSV)</button>
+                <button class="btn-sm primary">Créer un site</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartes intelligentes -->
+          <div class="panel">
+            <h3>Sites supervisés</h3>
+            <p class="panel-sub">Vue intelligente : risques, conformité, rondes, interventions, audits.</p>
+
+            <div class="site-grid">
+
+              <!-- Carte 1 -->
+              <div class="site-card">
+                <div class="site-card-header">
+                  <div class="site-title">Site A – Siège Client</div>
+                  <div class="site-client">Client : Groupe Alpha</div>
+                </div>
+
+                <div class="site-info">
+                  <div><strong>Adresse :</strong> Paris 15e</div>
+                  <div><strong>Risques :</strong> Incendie, Intrusion</div>
+                  <div><strong>Conformité :</strong> <span class="status-pill status-ok">94 %</span></div>
+                  <div><strong>Dernière ronde :</strong> 06:42</div>
+                  <div><strong>Dernière intervention :</strong> J‑2</div>
+                  <div><strong>Dernier audit :</strong> Conforme</div>
+                </div>
+
+                <div class="site-actions">
+                  <button class="btn-sm">Rondes</button>
+                  <button class="btn-sm">Interventions</button>
+                  <button class="btn-sm">Audits</button>
+                  <button class="btn-sm">Consignes</button>
+                </div>
+              </div>
+
+              <!-- Carte 2 -->
+              <div class="site-card">
+                <div class="site-card-header">
+                  <div class="site-title">Site B – Plateforme Logistique</div>
+                  <div class="site-client">Client : TransLog</div>
+                </div>
+
+                <div class="site-info">
+                  <div><strong>Adresse :</strong> Dakar</div>
+                  <div><strong>Risques :</strong> Vol, Zone isolée</div>
+                  <div><strong>Conformité :</strong> <span class="status-pill status-warn">
+                            <!-- PAGE RH & AGENTS -->
         <div id="page-rh" style="display:none;">
+
           <div class="panel">
             <div class="page-title">RH & Agents – Vue dirigeant</div>
             <div class="page-subtitle">
               Maquette fonctionnelle du module RH : liste des agents, conformité documentaire, pays, statut, notation.
               Cette structure est directement exploitable pour le développement.
             </div>
+
             <div class="toolbar">
               <div class="toolbar-left">
                 <input class="input-sm" type="text" placeholder="Rechercher un agent (nom, matricule)…">
@@ -886,11 +384,13 @@
                   <option>Inactif</option>
                 </select>
               </div>
+
               <div class="toolbar-right">
                 <button class="btn-sm">Exporter (CSV)</button>
                 <button class="btn-sm primary">Créer un agent</button>
               </div>
             </div>
+
             <table class="table">
               <thead>
                 <tr>
@@ -903,6 +403,7 @@
                   <th>Statut</th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr>
                   <td>M. D. – Matricule 001</td>
@@ -913,6 +414,7 @@
                   <td>16 / 20</td>
                   <td>Actif</td>
                 </tr>
+
                 <tr>
                   <td>A. S. – Matricule 014</td>
                   <td>Sénégal</td>
@@ -922,6 +424,7 @@
                   <td>14 / 20</td>
                   <td>Actif</td>
                 </tr>
+
                 <tr>
                   <td>K. B. – Matricule 032</td>
                   <td>France</td>
@@ -931,54 +434,50 @@
                   <td>–</td>
                   <td>À suspendre</td>
                 </tr>
+
                 <tr>
                   <td>N. T. – Matricule 045</td>
                   <td>Sénégal</td>
-                  <td><span class="status-pill status-ok">Conforme</span></td>
-                  <td>CNI, Contrat, Formation EPI</td>
-                  <td>Formation incendie à jour</td>
-                  <td>15 / 20</td>
-                  <td>Actif</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+                  <td><span class="status-pill status-ok">
+                           <!-- PAGE RONDES -->
+        <div id="page-rondes" style="display:none;">
           <div class="panel">
-            <h3>Lecture métier de ce module</h3>
-            <p class="panel-sub">
-              Ce tableau illustre la logique RH : conformité documentaire, formations, notation, statut.  
-              Il peut être directement transformé en vraie page dynamique (API + base de données).
-            </p>
-            <ul class="activity-list">
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Agents non conformes</div>
-                  <div class="activity-meta">Blocage automatique des affectations sur sites sensibles.</div>
-                </div>
-                <span class="badge">Règle métier</span>
-              </li>
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Alertes expirations</div>
-                  <div class="activity-meta">CNI, Carte Pro, formations : alertes J‑30 / J‑7 / J‑0.</div>
-                </div>
-                <span class="badge">Conformité</span>
-              </li>
-              <li class="activity-item">
-                <div>
-                  <div class="activity-main">Notation annuelle</div>
-                  <div class="activity-meta">Critères pondérés : ponctualité, professionnalisme, conformité, retour client.</div>
-                </div>
-                <span class="badge">Qualité RH</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+            <div class="page-title">Rondes – Vue dirigeant</div>
+            <div class="page-subtitle">
+              Maquette fonctionnelle des rondes : contrôle terrain, anti‑fraude, traçabilité GPS / QR / NFC.
+            </div>
 
-    </div>
-  </div>
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <input class="input-sm" type="text" placeholder="Rechercher un site ou une ronde…">
+                <select class="input-sm">
+                  <option>France & Sénégal</option>
+                  <option>France</option>
+                  <option>Sénégal</option>
+                </select>
+                <select class="input-sm">
+                  <option>Statut : tous</option>
+                  <option>Conforme</option>
+                  <option>Anomalies</option>
+                </select>
+              </div>
+              <div class="toolbar-right">
+                <button class="btn-sm">Exporter (CSV)</button>
+              </div>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Site</th>
+                  <th>Pays</th>
+                  <th>Type de ronde</th>
+                  <th>Horodatage</th>
+                  <th>Points contrôlés</th>
+                  <th>Anomalies</th>
+       </div> <!-- fin du content -->
+    </div> <!-- fin du main -->
+  </div> <!-- fin du app-shell -->
 
   <script>
     function enterApp() {
@@ -989,13 +488,21 @@
     }
 
     function showPage(page) {
-      // nav
+      // navigation active
       document.querySelectorAll('.nav-item[data-page]').forEach(item => {
         item.classList.toggle('active', item.getAttribute('data-page') === page);
       });
-      // pages
-      document.getElementById('page-dashboard').style.display = (page === 'dashboard') ? 'block' : 'none';
-      document.getElementById('page-rh').style.display = (page === 'rh') ? 'block' : 'none';
+
+      // affichage des pages
+      const pages = [
+        'dashboard', 'sites', 'rh',
+        'rondes', 'interventions', 'qualite', 'clients'
+      ];
+
+      pages.forEach(p => {
+        const el = document.getElementById('page-' + p);
+        if (el) el.style.display = (p === page) ? 'block' : 'none';
+      });
     }
 
     // clic sur menu
@@ -1006,7 +513,7 @@
       if (page) showPage(page);
     });
   </script>
+
 </body>
 </html>
-
 
