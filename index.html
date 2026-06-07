@@ -403,7 +403,45 @@
     @media (max-width: 900px) {
       .login-grid, .dash-grid { grid-template-columns: minmax(0, 1fr); }
       .sidebar { display: none !important; }
-    }
+    }.site-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.site-card {
+  border-radius: 0.8rem;
+  border: 1px solid var(--border);
+  background: #020617;
+  padding: 1rem;
+}
+
+.site-card-header {
+  margin-bottom: 0.6rem;
+}
+
+.site-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.site-client {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.site-info {
+  font-size: 0.78rem;
+  margin-bottom: 0.8rem;
+  color: var(--text);
+}
+
+.site-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
   </style>
 </head>
 <body>
