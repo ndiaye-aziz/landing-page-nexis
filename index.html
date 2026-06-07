@@ -414,6 +414,214 @@
         <div class="logo-mark">NX</div>
         <div class="logo-text">NEXIS <span>PLATFORM</span></div>
       </div>
+      <!-- PAGE SITES & OPERATIONS -->
+<div id="page-sites" style="display:none;">
+
+  <div class="panel">
+    <div class="page-title">Sites & Opérations – Vue dirigeant</div>
+    <div class="page-subtitle">
+      Gestion complète des sites, consignes, risques, rondes, interventions et audits.
+      Vue mixte : cartes intelligentes + tableau professionnel.
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <input class="input-sm" type="text" placeholder="Rechercher un site (nom, client, adresse)…">
+        <select class="input-sm">
+          <option>France & Sénégal</option>
+          <option>France</option>
+          <option>Sénégal</option>
+        </select>
+        <select class="input-sm">
+          <option>Type : tous</option>
+          <option>Industriel</option>
+          <option>Logistique</option>
+          <option>Tertiaire</option>
+          <option>Sensible</option>
+          <option>Événementiel</option>
+        </select>
+        <select class="input-sm">
+          <option>Statut : tous</option>
+          <option>Actif</option>
+          <option>En audit</option>
+          <option>Suspendu</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn-sm">Exporter (CSV)</button>
+        <button class="btn-sm primary">Créer un site</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cartes intelligentes -->
+  <div class="panel">
+    <h3>Sites supervisés</h3>
+    <p class="panel-sub">Vue intelligente : risques, conformité, rondes, interventions, audits.</p>
+
+    <div class="site-grid">
+      <!-- Carte 1 -->
+      <div class="site-card">
+        <div class="site-card-header">
+          <div class="site-title">Site A – Siège Client</div>
+          <div class="site-client">Client : Groupe Alpha</div>
+        </div>
+        <div class="site-info">
+          <div><strong>Adresse :</strong> Paris 15e</div>
+          <div><strong>Risques :</strong> Incendie, Intrusion</div>
+          <div><strong>Conformité :</strong> <span class="status-pill status-ok">94 %</span></div>
+          <div><strong>Dernière ronde :</strong> 06:42</div>
+          <div><strong>Dernière intervention :</strong> J‑2</div>
+          <div><strong>Dernier audit :</strong> Conforme</div>
+        </div>
+        <div class="site-actions">
+          <button class="btn-sm">Rondes</button>
+          <button class="btn-sm">Interventions</button>
+          <button class="btn-sm">Audits</button>
+          <button class="btn-sm">Consignes</button>
+        </div>
+      </div>
+
+      <!-- Carte 2 -->
+      <div class="site-card">
+        <div class="site-card-header">
+          <div class="site-title">Site B – Plateforme Logistique</div>
+          <div class="site-client">Client : TransLog</div>
+        </div>
+        <div class="site-info">
+          <div><strong>Adresse :</strong> Dakar</div>
+          <div><strong>Risques :</strong> Vol, Zone isolée</div>
+          <div><strong>Conformité :</strong> <span class="status-pill status-warn">78 %</span></div>
+          <div><strong>Dernière ronde :</strong> 03:12</div>
+          <div><strong>Dernière intervention :</strong> J‑1</div>
+          <div><strong>Dernier audit :</strong> 2 NC</div>
+        </div>
+        <div class="site-actions">
+          <button class="btn-sm">Rondes</button>
+          <button class="btn-sm">Interventions</button>
+          <button class="btn-sm">Audits</button>
+          <button class="btn-sm">Consignes</button>
+        </div>
+      </div>
+
+      <!-- Carte 3 -->
+      <div class="site-card">
+        <div class="site-card-header">
+          <div class="site-title">Site C – Data Center</div>
+          <div class="site-client">Client : TechCorp</div>
+        </div>
+        <div class="site-info">
+          <div><strong>Adresse :</strong> Lyon</div>
+          <div><strong>Risques :</strong> Incendie, Matériel critique</div>
+          <div><strong>Conformité :</strong> <span class="status-pill status-bad">62 %</span></div>
+          <div><strong>Dernière ronde :</strong> 01:55</div>
+          <div><strong>Dernière intervention :</strong> J‑5</div>
+          <div><strong>Dernier audit :</strong> 4 NC</div>
+        </div>
+        <div class="site-actions">
+          <button class="btn-sm">Rondes</button>
+          <button class="btn-sm">Interventions</button>
+          <button class="btn-sm">Audits</button>
+          <button class="btn-sm">Consignes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tableau professionnel -->
+  <div class="panel">
+    <h3>Tableau des sites</h3>
+    <p class="panel-sub">Vue détaillée : conformité, risques, rondes, interventions, audits.</p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>Client</th>
+          <th>Pays</th>
+          <th>Risques</th>
+          <th>Conformité</th>
+          <th>Rondes (30j)</th>
+          <th>Interventions (30j)</th>
+          <th>Audits</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Site A – Siège</td>
+          <td>Groupe Alpha</td>
+          <td>France</td>
+          <td>Incendie, Intrusion</td>
+          <td><span class="status-pill status-ok">94 %</span></td>
+          <td>98 %</td>
+          <td>95 %</td>
+          <td>Conforme</td>
+          <td>Actif</td>
+          <td><button class="btn-sm">Ouvrir</button></td>
+        </tr>
+        <tr>
+          <td>Site B – Logistique</td>
+          <td>TransLog</td>
+          <td>Sénégal</td>
+          <td>Vol, Zone isolée</td>
+          <td><span class="status-pill status-warn">78 %</span></td>
+          <td>87 %</td>
+          <td>92 %</td>
+          <td>2 NC</td>
+          <td>En audit</td>
+          <td><button class="btn-sm">Ouvrir</button></td>
+        </tr>
+        <tr>
+          <td>Site C – Data Center</td>
+          <td>TechCorp</td>
+          <td>France</td>
+          <td>Incendie, Matériel critique</td>
+          <td><span class="status-pill status-bad">62 %</span></td>
+          <td>72 %</td>
+          <td>80 %</td>
+          <td>4 NC</td>
+          <td>Suspendu</td>
+          <td><button class="btn-sm">Ouvrir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Lecture métier -->
+  <div class="panel">
+    <h3>Lecture métier</h3>
+    <p class="panel-sub">Analyse opérationnelle des sites supervisés.</p>
+
+    <ul class="activity-list">
+      <li class="activity-item">
+        <div>
+          <div class="activity-main">Sites non conformes</div>
+          <div class="activity-meta">Blocage automatique des rondes et interventions sensibles.</div>
+        </div>
+        <span class="badge">Conformité</span>
+      </li>
+      <li class="activity-item">
+        <div>
+          <div class="activity-main">Sites en audit</div>
+          <div class="activity-meta">Suivi des NC et actions correctives.</div>
+        </div>
+        <span class="badge">Qualité</span>
+      </li>
+      <li class="activity-item">
+        <div>
+          <div class="activity-main">Sites sensibles</div>
+          <div class="activity-meta">Procédures renforcées : incendie, intrusion, matériel critique.</div>
+        </div>
+        <span class="badge">Sécurité</span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
       <div class="sidebar-section-title">Navigation</div>
       <ul class="nav-list">
         <li class="nav-item active" data-page="dashboard">Tableau de bord</li>
